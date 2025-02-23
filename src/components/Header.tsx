@@ -12,7 +12,7 @@ export function Header() {
     routes.find((route) => route.url === pathname)?.title,
   );
   return (
-    <header className='flex border-b p-2 align-middle'>
+    <header className='sticky top-0 flex border-b bg-white/80 p-2 align-middle backdrop-blur-sm'>
       <SidebarTrigger className='mr-2' />
       <h1 className='pt-[3px] font-semibold'>
         {routes.find((route) => route.url === pathname)?.title}
