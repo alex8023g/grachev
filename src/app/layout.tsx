@@ -34,9 +34,11 @@ export default function RootLayout({
       >
         <SidebarProvider>
           <SidebarBlock />
-          <div className='relative w-full'>
+          <div className='flex h-dvh w-full flex-col overflow-hidden'>
             <Header />
-            <main className='p-3'>{children}</main>
+            <main className='flex h-full flex-col overflow-y-auto p-3'>
+              {children}
+            </main>
           </div>
         </SidebarProvider>
       </body>

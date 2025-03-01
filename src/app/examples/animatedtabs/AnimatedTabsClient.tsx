@@ -52,8 +52,8 @@ export function AnimatedTabsClient() {
           </li>
         </ul>
       </Flipper>
-      <div className='flex grow'>
-        <span className='m-auto text-5xl font-bold'>{selectedTab}</span>
+      <div className='flex flex-grow'>
+        <div className='m-auto text-5xl font-bold'>{selectedTab}</div>
       </div>
     </>
   );
