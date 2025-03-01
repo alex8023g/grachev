@@ -21,8 +21,8 @@ export default function Home() {
             'Node.js',
             'MongoDB',
             'PostgreSQL',
-            'Express.js',
-            'NextJs',
+            // 'Express.js',
+            // 'NextJs',
           ].map((item) => (
             <li key={item} className='ml-5'>
               {item}

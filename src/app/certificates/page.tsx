@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 const certificates = [
   'CertSBJSAdvanced.png',
+  'CertSBTS.png',
   'CertSBNodeJS.png',
   'CertSBReactJS.png',
-  'CertSBTS.png',
   'CertSBWebLayout.png',
   'CertSBWebLayoutAdvanced.png',
 ];

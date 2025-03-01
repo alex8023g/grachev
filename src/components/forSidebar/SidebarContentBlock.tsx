@@ -29,7 +29,7 @@ export const routes = [
     icon: <PiCertificateLight />,
   },
   { group: 'examples', title: 'Table', url: '/examples/table' },
-  { group: 'examples', title: 'S3 storage', url: '/examples/s3torage' },
+  { group: 'examples', title: 'S3 storage', url: '/examples/s3miniostorage' },
   { group: 'examples', title: 'Animated tabs', url: '/examples/animatedtabs' },
 ] as const;
 
