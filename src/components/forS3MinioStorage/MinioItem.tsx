@@ -7,10 +7,10 @@ export function MinioItem({ data }: { data: MinioOjectType & BucketItemStat }) {
   const router = useRouter();
   if (data.metaData['content-type'].includes('video')) {
     return (
-      <video width='320' height='240' controls>
+      <video width='320' height='240' style={{ minHeight: '240px' }} controls>
         <source
           src={'/api/minio/streamvideo?' + data.name}
-          type='video/mp4'
+          type={data.metaData['content-type']}
         ></source>
         {data.name}
       </video>
