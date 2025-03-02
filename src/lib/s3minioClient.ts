@@ -15,7 +15,7 @@ if (
   !process.env.MINIO_BUCKET
 ) {
   throw new Error(
-    '!process.env.MINIO_HOST || !process.env.MINIO_PORT ||  !process.env.MINIO_ACCESS_KEY || !process.env.MINIO_SECRET_KEY  ||   !process.env.MINIO_BUCKET'
+    '!process.env.MINIO_HOST || !process.env.MINIO_PORT ||  !process.env.MINIO_ACCESS_KEY || !process.env.MINIO_SECRET_KEY  ||   !process.env.MINIO_BUCKET',
   );
 }
 
@@ -28,3 +28,25 @@ export const minioClient = new Minio.Client({
 });
 
 export const bucket = process.env.MINIO_BUCKET;
+
+export function createMinioClient() {
+  if (
+    !process.env.MINIO_HOST ||
+    !process.env.MINIO_PORT ||
+    !process.env.MINIO_ACCESS_KEY ||
+    !process.env.MINIO_SECRET_KEY ||
+    !process.env.MINIO_BUCKET
+  ) {
+    throw new Error(
+      '!process.env.MINIO_HOST || !process.env.MINIO_PORT ||  !process.env.MINIO_ACCESS_KEY || !process.env.MINIO_SECRET_KEY  ||   !process.env.MINIO_BUCKET',
+    );
+  }
+
+  return new Minio.Client({
+    endPoint: process.env.MINIO_HOST,
+    port: Number(process.env.MINIO_PORT),
+    useSSL: false,
+    accessKey: process.env.MINIO_ACCESS_KEY,
+    secretKey: process.env.MINIO_SECRET_KEY,
+  });
+}

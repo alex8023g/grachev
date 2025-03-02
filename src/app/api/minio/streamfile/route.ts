@@ -1,7 +1,9 @@
-import { bucket, minioClient } from '@/lib/s3minioClient';
+import { bucket, createMinioClient } from '@/lib/s3minioClient';
 import { Readable } from 'stream';
 
 export async function GET(req: Request) {
+  const minioClient = createMinioClient();
+
   // const objectName = req.url.split('?')[1];
   const objectName = decodeURI(new URL(req.url).search).substring(1);
 
