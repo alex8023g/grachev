@@ -16,7 +16,14 @@ export function MinioItem({ data }: { data: MinioOjectType & BucketItemStat }) {
       </video>
     );
   } else if (data.metaData['content-type'].includes('image')) {
-    return <img src={'/api/minio/streamfile?' + data.name} alt='' />;
+    return (
+      <img
+        src={'/api/minio/streamfile?' + data.name}
+        height={100}
+        width={100}
+        alt=''
+      />
+    );
   } else if (
     data.metaData['content-type'].includes('application/msword') ||
     data.metaData['content-type'].includes(
