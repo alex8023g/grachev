@@ -1,27 +1,8 @@
-import { bucket } from '@/lib/s3minioClient';
+import { bucket, createMinioClient } from '@/lib/s3minioClient';
 import { Readable } from 'stream';
-import * as Minio from 'minio';
 
 export async function GET(req: Request) {
-  if (
-    !process.env.MINIO_HOST ||
-    !process.env.MINIO_PORT ||
-    !process.env.MINIO_ACCESS_KEY ||
-    !process.env.MINIO_SECRET_KEY ||
-    !process.env.MINIO_BUCKET
-  ) {
-    throw new Error(
-      '!process.env.MINIO_HOST || !process.env.MINIO_PORT ||  !process.env.MINIO_ACCESS_KEY || !process.env.MINIO_SECRET_KEY  ||   !process.env.MINIO_BUCKET',
-    );
-  }
-
-  const minioClient = new Minio.Client({
-    endPoint: process.env.MINIO_HOST,
-    port: Number(process.env.MINIO_PORT),
-    useSSL: false,
-    accessKey: process.env.MINIO_ACCESS_KEY,
-    secretKey: process.env.MINIO_SECRET_KEY,
-  });
+  const minioClient = createMinioClient();
 
   // const objectName = req.url.split('?')[1];
   const objectName = decodeURI(new URL(req.url).search).substring(1);
