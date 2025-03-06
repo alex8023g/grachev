@@ -1,3 +1,4 @@
+import { SquareArrowOutUpRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default async function MyAppsPage() {
@@ -6,7 +7,8 @@ export default async function MyAppsPage() {
       name: 'Diary web',
       img: 'diaryWeb.png',
       url: 'https://simplediary.io',
-      description: 'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Shadcn',
+      description:
+        'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Shadcn, Nginx, Certbot',
       github: 'https://github.com/alex8023g/diary-1/tree/main',
     },
     {
@@ -39,6 +41,13 @@ export default async function MyAppsPage() {
       description: 'адаптивная верстка pixel-perfect',
       github: '',
     },
+    {
+      name: 'grachev.io',
+      img: 'grachev.png',
+      url: 'https://grachev.io',
+      description: 'NextJs, Tailwind, Shadcn, S3 Minio Storage, Nginx',
+      github: 'https://github.com/alex8023g/grachev',
+    },
   ] as const;
 
   return (
@@ -68,8 +77,17 @@ export default async function MyAppsPage() {
               </div>
               <div>
                 {app.github && (
-                  <a href={app.github} target='_blank'>
-                    Github
+                  <a
+                    href={app.github}
+                    target='_blank'
+                    className='flex align-bottom'
+                  >
+                    <span className='text-gray-600'>Github</span>
+                    <SquareArrowOutUpRight
+                      size={14}
+                      color='gray'
+                      className='ml-1 self-center'
+                    />
                   </a>
                 )}
               </div>

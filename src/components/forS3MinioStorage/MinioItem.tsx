@@ -10,9 +10,9 @@ export function MinioItem({ data }: { data: MinioOjectType & BucketItemStat }) {
       <video
         width='320'
         height='240'
-        style={{ minHeight: '240px' }}
+        style={{ minHeight: '240px', maxHeight: '240px' }}
         controls
-        playsInline
+        // playsInline
       >
         <source
           src={'/api/minio/streamvideo?' + data.name + '#t=0.001'}
