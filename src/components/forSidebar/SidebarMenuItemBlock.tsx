@@ -1,5 +1,9 @@
 'use client';
-import { SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
+import {
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
@@ -13,9 +17,18 @@ type SidebarMenuItem = {
 type Props = { item: SidebarMenuItem };
 export function SidebarMenuItemBlock({ item }: Props) {
   const pathname = usePathname();
+  const { state, setOpenMobile } = useSidebar();
   return (
     <SidebarMenuItem key={item.title}>
-      <SidebarMenuButton asChild isActive={pathname === item.url}>
+      <SidebarMenuButton
+        asChild
+        isActive={pathname === item.url}
+        onClick={() => {
+          if (window.innerWidth < 768) {
+            setOpenMobile(!state);
+          }
+        }}
+      >
         <Link href={item.url}>
           {item.icon}
           <span>{item.title}</span>

@@ -7,18 +7,22 @@ export async function GET(req: Request) {
   // const objectName = req.url.split('?')[1];
   const objectName = decodeURI(new URL(req.url).search).substring(1);
 
-  const [stats, res] = await Promise.all([
-    minioClient.statObject(bucket, objectName),
-    minioClient.getObject(bucket, objectName),
-  ]);
-  const data: ReadableStream = iteratorToStream(nodeStreamToIterator(res));
+  try {
+    const [stats, res] = await Promise.all([
+      minioClient.statObject(bucket, objectName),
+      minioClient.getObject(bucket, objectName),
+    ]);
+    const data: ReadableStream = iteratorToStream(nodeStreamToIterator(res));
 
-  return new Response(data, {
-    status: 206,
-    headers: {
-      'Content-Type': stats.metaData['content-type'],
-    },
-  });
+    return new Response(data, {
+      status: 206,
+      headers: {
+        'Content-Type': stats.metaData['content-type'],
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function* nodeStreamToIterator(stream: Readable) {

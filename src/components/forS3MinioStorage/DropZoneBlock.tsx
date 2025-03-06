@@ -9,7 +9,7 @@ export function DropZoneBlock() {
   const [state, setState] = useState(0);
   return (
     <>
-      <div>{state}</div>
+      <div>{state ? state : ''}</div>
       <Dropzone
         onDrop={(acceptedFiles) => {
           console.log(acceptedFiles);
@@ -28,7 +28,7 @@ export function DropZoneBlock() {
               xhr.open('POST', '/api/minio/fileupload');
               xhr.setRequestHeader(
                 'Content-Disposition',
-                `attachment; filename=${filenameAscii}`
+                `attachment; filename=${filenameAscii}`,
               );
               xhr.setRequestHeader('Content-Type', `${file.type}`);
 
@@ -43,7 +43,7 @@ export function DropZoneBlock() {
                   console.log('загружено', e.loaded, e.total);
                   setState(e.loaded);
                 },
-                false
+                false,
               );
               xhr.send(reader.result);
 
@@ -56,10 +56,10 @@ export function DropZoneBlock() {
         }}
       >
         {({ getRootProps, getInputProps }) => (
-          <section className='border'>
-            <div {...getRootProps()} className='h-40'>
+          <section className='rounded-md border shadow-md'>
+            <div {...getRootProps()} className='h-32'>
               <input {...getInputProps()} />
-              <p>
+              <p className='p-3'>
                 Drag &apos;n&apos; drop some files here, or click to select
                 files
               </p>

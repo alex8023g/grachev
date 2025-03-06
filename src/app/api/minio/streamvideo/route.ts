@@ -4,54 +4,37 @@ import { Readable } from 'stream';
 export async function GET(req: Request) {
   const requestHeaders = new Headers(req.headers);
   const range = requestHeaders.get('range');
-  console.log('🚀 ~ GET ~ range:', range, req.method);
 
-  // const objectName = req.url.split('?')[1];
   const objectName = decodeURI(new URL(req.url).search).substring(1);
 
-  const stats = await minioClient.statObject(bucket, objectName);
+  try {
+    const stats = await minioClient.statObject(bucket, objectName);
 
-  const videoSize = stats.size;
-  // const start = Number(range?.replace(/\D/g, ''));
-  const start = Number(range?.split('=')[1].split('-')[0]);
-  console.log('🚀 ~ GET ~ start:', start);
-  // const end = Math.min(start + 1000_000, videoSize - 1);
-  const end = Number(range?.split('=')[1].split('-')[1]) || videoSize - 1;
-  console.log('🚀 ~ GET ~ end:', end);
+    const videoSize = stats.size;
+    const start = Number(range?.split('=')[1].split('-')[0]);
+    const end = Number(range?.split('=')[1].split('-')[1]) || videoSize - 1;
+    const contentLength = end - start === 1 ? 1 : end - start + 1; // для ios и macos
 
-  const res = await minioClient.getPartialObject(
-    bucket,
-    objectName,
-    start,
-    end,
-  );
-  const data: ReadableStream = iteratorToStream(nodeStreamToIterator(res));
-  console.log('🚀 ~ GET ~ data:', data);
+    const res = await minioClient.getPartialObject(
+      bucket,
+      objectName,
+      start,
+      end,
+    );
+    const data: ReadableStream = iteratorToStream(nodeStreamToIterator(res));
 
-  let retrievedLength;
-  if (start !== undefined && end !== undefined) {
-    retrievedLength = end + 1 - start;
-  } else if (start !== undefined) {
-    retrievedLength = videoSize - start;
-  } else if (end !== undefined) {
-    retrievedLength = end + 1;
-  } else {
-    retrievedLength = videoSize;
+    return new Response(data, {
+      status: 206,
+      headers: {
+        'Accept-Ranges': `bytes`,
+        'Content-Length': `${contentLength}`,
+        'Content-Range': `bytes ${start}-${end}/${videoSize}`,
+        'Content-Type': stats.metaData['Content-Type'],
+      },
+    });
+  } catch (error) {
+    console.error(error);
   }
-
-  return new Response(data, {
-    status: 206,
-    headers: {
-      'Accept-Ranges': `bytes`,
-      Connection: 'Keep-Alive',
-      // 'Content-Length': `${end - start + 1}`,
-      'Content-Length': `${retrievedLength}`,
-      'Content-Range': `bytes ${start}-${end}/${videoSize}`,
-      // 'Content-Type': stats.metaData['Content-Type'],
-      'Content-Type': 'video/mp4',
-      'X-Playback-Session-Id': 'someRandom-chars-like.uuid',
-    },
-  });
 }
 
 async function* nodeStreamToIterator(stream: Readable) {
@@ -69,24 +52,6 @@ function iteratorToStream(iterator: AsyncGenerator<Uint8Array, void, unknown>) {
       } else {
         controller.enqueue(value);
       }
-    },
-  });
-}
-
-export async function HEAD(req: Request) {
-  console.log('🚀 ~ HEAD ~ req:', req.method);
-
-  const objectName = decodeURI(new URL(req.url).search).substring(1);
-
-  const stats = await minioClient.statObject(bucket, objectName);
-
-  const videoSize = stats.size;
-  return new Response('', {
-    status: 200,
-    headers: {
-      'Accept-Ranges': `bytes`,
-
-      'Content-Length': `${videoSize + 1}`,
     },
   });
 }
