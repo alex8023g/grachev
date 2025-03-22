@@ -31,6 +31,7 @@ export const routes = [
   // { group: 'examples', title: 'Table', url: '/examples/table' },
   { group: 'examples', title: 'S3 storage', url: '/examples/s3miniostorage' },
   { group: 'examples', title: 'Animated tabs', url: '/examples/animatedtabs' },
+  { group: 'examples', title: 'Data table', url: '/examples/table' },
 ] as const;
 
 export function SidebarContentBlock() {
