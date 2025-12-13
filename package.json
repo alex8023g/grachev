@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3002",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 3002",
+    "start": "next start",
+    "start:port-from-env": "next start -p $(grep PORT .env | cut -d '=' -f2)",
     "lint": "next lint"
   },
   "dependencies": {
