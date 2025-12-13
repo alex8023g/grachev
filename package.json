@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:port-from-env": "next start -p $(grep PORT .env | cut -d '=' -f2)",
+    "start:port-from-env": "next start -p $(grep PORT_EXPOSE .env | cut -d '=' -f2)",
     "lint": "next lint"
   },
   "dependencies": {
