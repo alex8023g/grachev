@@ -4,7 +4,7 @@ import './globals.css';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { SidebarBlock } from '@/components/forSidebar/SidebarBlock';
 import { Header } from '@/components/Header';
-import { YaMetrika } from '@/components/YaMetrika';
+// import { YaMetrika } from '@/components/YaMetrika';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -30,7 +30,7 @@ export default function RootLayout({
   console.log('RootLayout');
   return (
     <html lang='en'>
-      <YaMetrika />
+      {/* <YaMetrika /> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
