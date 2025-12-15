@@ -4,12 +4,49 @@ import Image from 'next/image';
 export default async function MyAppsPage() {
   const apps = [
     {
+      name: 'Urlaubs planer',
+      img: 'urlaubsplanner.png',
+      url: 'https://urlaubsplaner.pro',
+      description: 'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Nginx',
+      github: 'https://github.com/alex8023g/diary-1/tree/main',
+    },
+    {
+      name: 'Beauty calendar',
+      img: 'beautycalendarIOS.png',
+      url: 'https://apps.apple.com/am/app/beauty-calendar/id6755293904',
+      description: 'IOS app, React, Vite, Tailwind, Typescript, Capacitor',
+      github: 'https://github.com/alex8023g/beauty-calendar',
+    },
+    {
       name: 'Diary web',
       img: 'diaryWeb.png',
-      url: 'https://simplediary.io',
+      url: 'https://diarysimple.com',
       description:
         'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Shadcn, Nginx, Certbot',
       github: 'https://github.com/alex8023g/diary-1/tree/main',
+    },
+
+    {
+      name: 'Diary IOS',
+      img: 'diaryIOS.png',
+      url: 'https://play.google.com/store/apps/details?id=diary.app',
+      description:
+        'Android приложение, в России открывать с android телефона или через vpn',
+      github: 'https://github.com/alex8023g/diary-app',
+    },
+    {
+      name: 'W-wave',
+      img: 'wwave.png',
+      url: 'https://w-wave-six.vercel.app',
+      description: 'HTML, CSS, pixel-perfect',
+      github: '',
+    },
+    {
+      name: 'grachev.io',
+      img: 'grachevTable.png',
+      url: 'https://grachev.io',
+      description: 'NextJs, Tailwind, Shadcn, S3 Minio Storage, Nginx',
+      github: 'https://github.com/alex8023g/grachev',
     },
     {
       name: 'Diary android',
@@ -33,20 +70,6 @@ export default async function MyAppsPage() {
       url: 'https://pomodoro-alpha-six.vercel.app',
       description: 'React, Typescript, React router, DnD, MUI',
       github: 'https://github.com/alex8023g/pomodoro',
-    },
-    {
-      name: 'W-wave',
-      img: 'radio.png',
-      url: 'https://w-wave-six.vercel.app',
-      description: 'адаптивная верстка pixel-perfect',
-      github: '',
-    },
-    {
-      name: 'grachev.io',
-      img: 'grachev.png',
-      url: 'https://grachev.io',
-      description: 'NextJs, Tailwind, Shadcn, S3 Minio Storage, Nginx',
-      github: 'https://github.com/alex8023g/grachev',
     },
   ] as const;
 
