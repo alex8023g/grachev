@@ -28,7 +28,7 @@ export default async function MyAppsPage() {
 
     {
       name: 'Diary IOS',
-      img: 'diaryIOS.png',
+      img: 'diaryappios.png',
       url: 'https://play.google.com/store/apps/details?id=diary.app',
       description:
         'Android приложение, в России открывать с android телефона или через vpn',
