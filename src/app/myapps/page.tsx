@@ -6,7 +6,7 @@ export default async function MyAppsPage() {
     {
       name: 'Urlaubs planer',
       img: 'urlaubsplanner.png',
-      url: 'https://urlaubsplaner.pro',
+      url: 'https://otpuskplan.ru',
       description: 'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Nginx',
       github: 'https://github.com/alex8023g/diary-1/tree/main',
     },
@@ -29,7 +29,7 @@ export default async function MyAppsPage() {
     {
       name: 'Diary IOS',
       img: 'diaryappios.png',
-      url: 'https://play.google.com/store/apps/details?id=diary.app',
+      url: 'https://apps.apple.com/ru/app/diary-app/id6752512860',
       description:
         'Android приложение, в России открывать с android телефона или через vpn',
       github: 'https://github.com/alex8023g/diary-app',
@@ -42,9 +42,9 @@ export default async function MyAppsPage() {
       github: '',
     },
     {
-      name: 'grachev.io',
+      name: 'grachev.dev',
       img: 'grachevTable.png',
-      url: 'https://grachev.io',
+      url: 'https://grachev.dev',
       description: 'NextJs, Tailwind, Shadcn, S3 Minio Storage, Nginx',
       github: 'https://github.com/alex8023g/grachev',
     },
