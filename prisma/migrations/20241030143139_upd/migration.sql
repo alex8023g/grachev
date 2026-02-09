@@ -5,4 +5,4 @@
 
 */
 -- AlterTable
-ALTER TABLE "Payments" ADD COLUMN     "amount" INTEGER NOT NULL;
+ALTER TABLE "payments" ADD COLUMN     "amount" INTEGER NOT NULL;
