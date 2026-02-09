@@ -4,11 +4,15 @@ import { MinioOjectType } from '../../../lib/s3minioClient';
 import { DownloadItem } from '@/components/forS3MinioStorage/DownloadItem';
 import { BucketItemStat } from 'minio';
 import { MinioItem } from '@/components/forS3MinioStorage/MinioItem';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function S3minioStoragePage() {
+  console.log('🚀 ~ S3minioStoragePage ~ start');
   const minioItemsList: (MinioOjectType & BucketItemStat)[] =
     await getMinioFileList();
-  // console.log('🚀 ~ HomePage ~ res:', minioItemsList);
+
+  console.log('🚀 ~ S3minioStoragePage ~ minioItemsList:', minioItemsList);
   return (
     <div className='flex h-full flex-col'>
       <ul className='flex flex-grow flex-wrap justify-start overflow-y-auto'>
