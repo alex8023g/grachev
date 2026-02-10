@@ -9,7 +9,9 @@
     "start:2": "next start && tsx prisma/seed.ts",
     "start:port-from-env": "next start -p $(grep PORT_EXPOSE .env | cut -d '=' -f2)",
     "lint": "next lint",
-    "seed": "tsx prisma/seed.ts"
+    "migrate:dev": "dotenv -e .env.development -- npx prisma migrate dev",
+    "seed": "tsx prisma/seed.ts",
+    "seed:dev": "dotenv -e .env.development -- tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
@@ -47,6 +49,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.20",
     "postcss": "^8",
