@@ -1,11 +1,11 @@
 -- CreateEnum
-CREATE TYPE "PaymentStatus" AS ENUM ('processing', 'pending', 'success', 'errorr');
+CREATE TYPE "PaymentStatus" AS ENUM ('processing', 'pending', 'success', 'failed');
 
 -- CreateTable
-CREATE TABLE "Payments" (
+CREATE TABLE "payments" (
     "id" TEXT NOT NULL,
     "status" "PaymentStatus" NOT NULL,
     "email" TEXT NOT NULL,
 
-    CONSTRAINT "Payments_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "payments_pkey" PRIMARY KEY ("id")
 );
