@@ -31,11 +31,11 @@ services:
       - "${PORT_EXPOSE}:${PORT}"
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db-grachev:5432/docker_grachev_1?schema=public
-      MINIO_HOST: minio-grachev
-      MINIO_PORT: "9000"
-      MINIO_ACCESS_KEY: minioadmin
-      MINIO_SECRET_KEY: minioadmin
-      MINIO_BUCKET: minio-bucket-1
+      # MINIO_HOST: minio-grachev
+      # MINIO_PORT: "9000"
+      # MINIO_ACCESS_KEY: minioadmin
+      # MINIO_SECRET_KEY: minioadmin
+      # MINIO_BUCKET: minio-bucket-1
     depends_on:
       - db-grachev
       - minio-grachev

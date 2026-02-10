@@ -21,7 +21,7 @@ coverage
 *.pem
 
 # Env files
-!.env
+# .env
 .env*.local
 
 # IDE
