@@ -54,7 +54,8 @@ export function DataTable<TData extends Payment, TValue>({
 }: DataTableProps<TData, TValue>) {
   console.log('DataTable');
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [deleteRows, setDeleteRows] = useState(false);
+  // const [deleteRows, setDeleteRows] = useState(false);
+  const [deletingRows, setDeletingRows] = useState<string[]>([]);
   // const refDelBtn = useRef<HTMLButtonElement | null>(null);
   const { payments, totalRecords } = paymentServerResp;
   const table = useReactTable({
@@ -106,11 +107,12 @@ export function DataTable<TData extends Payment, TValue>({
               )}
               onClick={async () => {
                 console.log(selectedRows);
-                setDeleteRows(true);
+                setDeletingRows(selectedRows);
+                // setDeleteRows(true);
                 await delay(500);
                 deletePayments(selectedRows);
                 await delay(100);
-                setDeleteRows(false);
+                // setDeleteRows(false);
                 setSelectedRows([]);
               }}
             >
@@ -174,7 +176,8 @@ export function DataTable<TData extends Payment, TValue>({
                     <TableRow
                       className={twJoin(
                         'animate-opacity-inc',
-                        selectedRows.includes(row.original.id) && deleteRows
+                        // selectedRows.includes(row.original.id) && deleteRows
+                        deletingRows.includes(row.original.id)
                           ? 'opacity-0'
                           : 'opacity-100',
                       )}
