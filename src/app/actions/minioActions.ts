@@ -3,12 +3,20 @@
 import { bucket, minioClient, MinioOjectType } from '@/lib/s3minioClient';
 import { BucketItemStat } from 'minio';
 
+async function ensureBucketExists() {
+  const exists = await minioClient.bucketExists(bucket);
+  if (!exists) {
+    await minioClient.makeBucket(bucket);
+  }
+}
+
 export async function getMinioFileList(): Promise<
   (MinioOjectType & BucketItemStat)[]
 > {
   const listObjects: MinioOjectType[] = [];
 
   try {
+    await ensureBucketExists();
     const stream = minioClient.listObjectsV2(bucket, '', true, '');
 
     await new Promise((resolve, reject) => {
