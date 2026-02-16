@@ -4,73 +4,86 @@ import Image from 'next/image';
 export default async function MyAppsPage() {
   const apps = [
     {
-      name: 'Urlaubs planer',
-      img: 'urlaubsplanner.png',
+      name: 'Otpusk planer',
+      img: 'otpuskPlan.jpg',
       url: 'https://otpuskplan.ru',
       description: 'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Nginx',
       github: 'https://github.com/alex8023g/diary-1/tree/main',
     },
     {
       name: 'Beauty calendar',
-      img: 'beautycalendarIOS.png',
+      img: 'beautycalendarIOS.jpg',
       url: 'https://apps.apple.com/am/app/beauty-calendar/id6755293904',
       description: 'IOS app, React, Vite, Tailwind, Typescript, Capacitor',
       github: 'https://github.com/alex8023g/beauty-calendar',
     },
     {
-      name: 'Diary web',
-      img: 'diaryWeb.png',
-      url: 'https://diarysimple.com',
+      name: 'grachev.dev',
+      img: 'grachevTable.jpg',
+      url: 'https://grachev.dev',
       description:
-        'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Shadcn, Nginx, Certbot',
-      github: 'https://github.com/alex8023g/diary-1/tree/main',
+        'NextJs, Tailwind, Shadcn, S3 Minio Storage, Nginx, Docker compose',
+      github: 'https://github.com/alex8023g/grachev',
     },
-
+    {
+      name: 'Pomodoro',
+      img: 'pomodoroIOS.jpg',
+      url: 'https://apps.apple.com/ru/app/pomodoro3/id6756366096',
+      description: 'IOS app, React, Typescript, CSS, Capacitor',
+      github: 'https://github.com/alex8023g/pomodoro-3',
+    },
+    {
+      name: 'Sitdown pls',
+      img: 'sitdownpls.jpg',
+      url: 'https://sdpls.grachev.dev',
+      description: 'HTML, CSS, sass, gulp, pixel-perfect',
+      github: 'https://github.com/alex8023g/sitdown-pls',
+    },
     {
       name: 'Diary IOS',
-      img: 'diaryappios.png',
+      img: 'diaryIOS.jpg',
       url: 'https://apps.apple.com/ru/app/diary-app/id6752512860',
-      description:
-        'Android приложение, в России открывать с android телефона или через vpn',
+      description: 'IOS app, React, Typescript, CSS, Capacitor',
       github: 'https://github.com/alex8023g/diary-app',
     },
     {
       name: 'W-wave',
-      img: 'wwave.png',
+      img: 'wwave.jpg',
       url: 'https://w-wave-six.vercel.app',
       description: 'HTML, CSS, pixel-perfect',
       github: '',
     },
     {
-      name: 'grachev.dev',
-      img: 'grachevTable.png',
-      url: 'https://grachev.dev',
-      description: 'NextJs, Tailwind, Shadcn, S3 Minio Storage, Nginx',
-      github: 'https://github.com/alex8023g/grachev',
-    },
-    {
-      name: 'Diary android',
-      img: 'diaryAndroid.png',
-      url: 'https://play.google.com/store/apps/details?id=diary.app',
-      description:
-        'Android приложение, в России открывать с android телефона или через vpn',
-      github: 'https://github.com/alex8023g/diary-app',
-    },
-    {
       name: 'Todooooit android',
-      img: 'todooooit.png',
+      img: 'todooooit.jpg',
       url: 'https://play.google.com/store/apps/details?id=todo.cap.v1.com',
       description:
         'Android приложение, в России открывать с android телефона или через vpn',
       github: 'https://github.com/alex8023g/todo-cap-1',
     },
-    {
-      name: 'Pomodoro',
-      img: 'pomodoro.png',
-      url: 'https://pomodoro-alpha-six.vercel.app',
-      description: 'React, Typescript, React router, DnD, MUI',
-      github: 'https://github.com/alex8023g/pomodoro',
-    },
+    // {
+    //   name: 'Diary web',
+    //   img: 'diaryWeb.jpg',
+    //   url: 'https://diarysimple.com',
+    //   description:
+    //     'NextJS, Postgres, Prisma ORM, Next Auth, Tailwind, Shadcn, Nginx, Certbot',
+    //   github: 'https://github.com/alex8023g/diary-1/tree/main',
+    // },
+    // {
+    //   name: 'Diary android',
+    //   img: 'diaryAndroid.jpg',
+    //   url: 'https://play.google.com/store/apps/details?id=diary.app',
+    //   description:
+    //     'Android приложение, в России открывать с android телефона или через vpn',
+    //   github: 'https://github.com/alex8023g/diary-app',
+    // },
+    // {
+    //   name: 'Pomodoro',
+    //   img: 'pomodoro.jpg',
+    //   url: 'https://pomodoro-alpha-six.vercel.app',
+    //   description: 'React, Typescript, React router, DnD, MUI',
+    //   github: 'https://github.com/alex8023g/pomodoro',
+    // },
   ] as const;
 
   return (
