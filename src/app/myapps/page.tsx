@@ -12,7 +12,7 @@ export default async function MyAppsPage() {
     },
     {
       name: 'Beauty calendar',
-      img: 'beautycalendarIOS.jpg',
+      img: 'beautyCalendarIOS.jpg',
       url: 'https://apps.apple.com/am/app/beauty-calendar/id6755293904',
       description: 'IOS app, React, Vite, Tailwind, Typescript, Capacitor',
       github: 'https://github.com/alex8023g/beauty-calendar',
