@@ -23,6 +23,14 @@ export default async function CertificatesPage() {
             />
           </li>
         ))}
+        <li className='mb-5 overflow-hidden rounded-xl shadow-lg'>
+          <Image
+            src={'/img/certificates/ya-sql2.jpg'}
+            width={1100}
+            height={500}
+            alt='Picture of the author'
+          />
+        </li>
       </ul>
     </>
   );
