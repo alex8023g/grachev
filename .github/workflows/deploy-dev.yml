@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove image
+        run: docker compose down --rmi local
+
+      - name: Load .env from runner directory to current directory
+        run: |
+          RUNNER_HOME=$(dirname $(dirname $(dirname $(pwd))))
+          cp $RUNNER_HOME/.env .env
+
+      - name: Start container
+        run: docker compose up -d
